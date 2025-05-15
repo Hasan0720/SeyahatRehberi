@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Seyahat Rehberi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="w3-light-grey">
+
+    <header>
+        <!-- Responsive Navigation Bar -->
+        <div class="w3-bar w3-black w3-border-bottom w3-xlarge">
+            <nav>
+                <!-- Menü Butonu (Sadece Mobilde Görünür) -->
+                <button class="w3-button w3-black w3-xlarge w3-hide-large" onclick="toggleMenu()">&#9776;</button>
+
+                <!-- Navigasyon Linkleri (Büyük Ekranda Görünür) -->
+                <div class="nav-links w3-hide-small">
+                    <a href="index.html">Ana Sayfa</a>
+                    <a href="flight-hotel.html">Uçuş ve Otel Arama</a>
+                    <a href="tours.html">Turlar</a>
+                    <a href="contact.html">İletişim</a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobil Menü (Başlangıçta Gizli) -->
+        <div id="mobileMenu" class="w3-hide w3-bar-block w3-black w3-large">
+            <a href="index.html" class="w3-bar-item w3-button">Seyahat Rehberi</a>
+            <a href="flight-hotel.html" class="w3-bar-item w3-button">Uçuş ve Otel Arama</a>
+            <a href="tours.html" class="w3-bar-item w3-button">Turlar</a>
+            <a href="contact.html" class="w3-bar-item w3-button">İletişim</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="w3-display-container seyahat-menüsü" style="width:100%" onmousemove="addCircle(event)">
+            <div class="w3-display-middle" style="width:60%" onmousemove="disableHoverEffect(true)">
+                <div class="w3-bar w3-black w3-flex-center seyahat-menüsü-bar"
+                    style="display: flex; justify-content: space-evenly;  height: auto;">
+                    <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"
+                        onclick="showSection('Flight')"><i class="fa fa-plane w3-margin-right"
+                            style="padding: 0px 20px;"></i>Uçuş</button>
+                    <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');"
+                        onclick="showSection('Hotel')"><i class="fa fa-bed w3-margin-right"
+                            style="padding: 0px 20px;"></i>Otel</button>
+                </div>
+
+                <!-- Tabs -->
+                <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
+                    <h3>Türkiye'yi Gezin</h3>
+                    <p>Geziniz için uçuşunuzu planlayın.</p>
+                    <div class="w3-row-padding" style="margin:0 -16px;">
+                        <div class="w3-third">
+                            <label>Gideceğiniz Yer</label>
+                            <select id="flightDestination" class="w3-select w3-border">
+                                <option value="" disabled selected>Şehir Seçiniz</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="Adıyaman">Adıyaman</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Denizli">Denizli</option>
+                            </select>
+                        </div>
+                        <div class="w3-third">
+                            <label>En Erken Tarih</label>
+                            <input id="flightStartDate" class="w3-input w3-border" type="datetime-local">
+                        </div>
+                        <div class="w3-third">
+                            <label>En Geç Tarih</label>
+                            <input id="flightEndDate" class="w3-input w3-border" type="datetime-local">
+                        </div>
+                    </div>
+                    <p><button onclick="searchFlights()" class="w3-button w3-dark-grey">Uçuşları Ara</button></p>
+                </div>
+
+                <!-- Sonuç bölümü -->
+                <div id="flightResults" style="display:none;">
+                    <h4>Arama Sonuçları</h4>
+                    <ul id="flightResultList"></ul>
+                    <p id="flightResultsMessage" style="display:none; color: red;">Girmiş olduğunuz şehir ve tarih
+                        aralıklarında uygun uçuş bulunamadı.</p>
+                </div>
+
+                <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
+                    <h3>En iyi ve uygun otelleri bulun</h3>
+                    <p>Otel rezervasyonunuzu bizimle yapın, <span class="w3-tag w3-orange">en iyi fiyatları</span> ve
+                        <span class="w3-tag w3-orange">promosyonları</span> kaçırmayın.</p>
+                    <div class="w3-row-padding" style="margin:0 -16px;">
+                        <div class="w3-third">
+                            <label>Gideceğiniz Yer</label>
+                            <select id="hotelDestination" class="w3-select w3-border">
+                                <option value="" disabled selected>Şehir Seçiniz</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="Adıyaman">Adıyaman</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Denizli">Denizli</option>
+                            </select>
+                        </div>
+                        <div class="w3-third">
+                            <label>Rezervasyon Başlangıç</label>
+                            <input id="reservationStartDate" class="w3-input w3-border" type="datetime-local">
+                        </div>
+                        <div class="w3-third">
+                            <label>Rezervasyon Bitiş</label>
+                            <input id="reservationEndDate" class="w3-input w3-border" type="datetime-local">
+                        </div>
+                    </div>
+                    <p><button onclick="searchHotels()" class="w3-button w3-dark-grey">Otelleri Ara</button></p>
+                </div>
+
+                <!--Sonuçlar Bölümü-->
+                <div id="hotelResults" style="display:none;">
+                    <h4>Arama Sonuçları</h4>
+                    <ul id="hotelResultList"><a href=""></a></ul>
+                    <p id="hotelResultsMessage" style="display:none; color: red;">Girmiş olduğunuz şehir ve tarih
+                        aralıklarında boş otel bulunamadı.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <footer>
+        <div style="background-color: black; color: white; padding: 20px; text-align: center;">
+            <h5>Sosyal Medya Adreslerimiz</h5>
+            <div class="w3-xlarge w3-padding-8">
+                <a href="https://www.facebook.com/" target="_blank" class="w3-hover-text-blue">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="w3-hover-text-purple">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" class="w3-hover-text-blue">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+
+            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                    class="w3-hover-text-green">w3.css</a></p>
+            <p>© 2024 Bu site örnek amaçlıdır.</p>
+        </div>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+
+</body>
+
+</html>

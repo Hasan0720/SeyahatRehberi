@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <title>Seyahat Rehberi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body class="w3-light-grey">
+  
+  <header>
+    <!-- Responsive Navigation Bar -->
+    <div class="w3-bar w3-black w3-border-bottom w3-xlarge">
+      <nav>
+        <!-- Menü Butonu (Sadece Mobilde Görünür) -->
+        <button class="w3-button w3-black w3-xlarge w3-hide-large" onclick="toggleMenu()">&#9776;</button>
+
+        <!-- Navigasyon Linkleri (Büyük Ekranda Görünür) -->
+        <div class="nav-links w3-hide-small">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="flight-hotel.html">Uçuş ve Otel Arama</a>
+          <a href="tours.html">Turlar</a>
+          <a href="contact.html">İletişim</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobil Menü (Başlangıçta Gizli) -->
+    <div id="mobileMenu" class="w3-hide w3-bar-block w3-black w3-large">
+      <a href="index.html" class="w3-bar-item w3-button">Seyahat Rehberi</a>
+      <a href="flight-hotel.html" class="w3-bar-item w3-button">Uçuş ve Otel Arama</a>
+      <a href="tours.html" class="w3-bar-item w3-button">Turlar</a>
+      <a href="contact.html" class="w3-bar-item w3-button">İletişim</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Slider Section -->
+    <div class="w3-display-container slider-container">
+      <div class="w3-display-container mySlides">
+        <img src="img/yerebatanSarnici.jpg" alt="Yerebatan Sarnıcı" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Yerebatan Sarnıcı / İstanbul
+        </div>
+      </div>
+      <div class="w3-display-container mySlides">
+        <img src="img/nemrutDagi.jpg" alt="Nemrut Dağı" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Nemrut Dağı / Adıyaman</div>
+      </div>
+      <div class="w3-display-container mySlides">
+        <img src="img/kizKulesi.jpg" alt="Kız Kulesi" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Kız Kulesi / İstanbul</div>
+      </div>
+      <div class="w3-display-container mySlides">
+        <img src="img/manavgatSelalesi.jpg" alt="Manavgat Şelalesi" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Manavgat Şelalesi / Antalya
+        </div>
+      </div>
+      <div class="w3-display-container mySlides">
+        <img src="img/aspendosTiyatrosu.jpg" alt="Aspendos Tiyatrosu" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Aspendos Tiyatrosu / Antalya
+        </div>
+      </div>
+      <div class="w3-display-container mySlides">
+        <img src="img/pamukkaleTravertenleri.jpg" alt="Pamukkale Travertenleri" onclick="openLightbox(this)">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">Pamukkale Travertenleri /
+          Denizli
+        </div>
+      </div>
+      <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+      <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+
+    <!-- Sayfalar Hakkında Bilgi Kısmı -->
+    <div class="w3-container w3-center w3-margin-top">
+      <h3>Sayfalarımızın İçerikleri</h3>
+      <div class="w3-container w3-margin-top">
+        <!-- Uçuş ve Otel Arama -->
+        <div class="w3-card-4 w3-margin-bottom">
+          <div class="w3-container" style="text-align: left;">
+            <h4>Uçuş ve Otel Arama</h4>
+            <p>Uçuş ve otel arama sayfası, seyahat etmeyi planlayanlar için en ideal platformdur. Burada, Türkiye'deki
+              şehirler için en uygun fiyatlarla uçuşlar ve konaklama seçeneklerini keşfederek, bütçenize uygun en iyi
+              alternatifleri bulabilirsiniz. Ayrıca, otel rezervasyonları ve uçuşlar için kullanıcı dostu bir arayüzle
+              hızlıca arama yapabilirsiniz.</p>
+            <a href="flight-hotel.html" class="w3-button w3-black">Sayfayı Gör</a>
+          </div>
+        </div>
+        <!-- Turlar -->
+        <div class="w3-card-4 w3-margin-bottom">
+          <div class="w3-container" style="text-align: left;">
+            <h4>Turlar</h4>
+            <p>Türkiye’nin benzersiz doğal ve tarihi güzelliklerini keşfetmek isteyenler için ideal bir sayfa. Burada,
+              farklı bölgelerdeki en popüler turlar hakkında detaylı bilgilere ulaşabilirsiniz. İster kültürel
+              isterseniz
+              doğal güzellikleri keşfetmek için turlar arayın. Her türlü istekleriniz için aradığınızı kolayca
+              bulabilirsiniz.</p>
+            <a href="tours.html" class="w3-button w3-black">Sayfayı Gör</a>
+          </div>
+        </div>
+        <!-- İletişim -->
+        <div class="w3-card-4 w3-margin-bottom">
+          <div class="w3-container" style="text-align: left;">
+            <h4>İletişim</h4>
+            <p>Bizimle iletişime geçmek çok kolay! Her türlü soru, öneri ve görüşleriniz için iletişim sayfamızda yer
+              alan
+              formu doldurabilir ya da doğrudan bize telefon ve e-posta yoluyla ulaşabilirsiniz. Size en kısa sürede
+              geri
+              dönüş yaparak, tüm taleplerinize yardımcı olacağız. Seyahatlerinizle ilgili her türlü desteği burada
+              bulabilirsiniz.</p>
+            <a href="contact.html" class="w3-button w3-black">Sayfayı Gör</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Yazıları -->
+    <div class="w3-container w3-center w3-margin-top">
+      <h3>Seyahatler Hakkında Popüler Blog Yazıları</h3>
+      <div class="w3-container w3-margin-top">
+        <!-- Türkiye'nin En Güzel Plajları -->
+        <div class="w3-card-4 w3-margin-bottom">
+          <div class="w3-container" style="display: flex; align-items: center; padding: 15px">
+            <img src="img/efesAntikKenti.jpg" alt="Türkiye'nin En Güzel Plajları"
+              style="width: 50%; height: auto; padding: 15px;" onclick="openLightbox(this)">
+            <div>
+              <h4>Türkiye'nin Tarihi Kentleri</h4>
+              <p>Türkiye, zengin tarihi ve kültürel mirasıyla büyüleyen bir ülkedir. Anadolu topraklarında yaşamış
+                medeniyetlerin izlerini sürebileceğiniz tarihi kentler, geçmişe bir yolculuk yapmak isteyenler için
+                eşsiz
+                bir deneyim sunar. Bu tarihi şehirleri keşfederek hem kültürel bir yolculuğa çıkabilir hem de unutulmaz
+                anılar biriktirebilirsiniz. Detaylı yazımızda Türkiye'nin en etkileyici tarihi kentlerini öğrenin.</p>
+              <a href="https://www.blogger.com/about/?bpli=1" class="w3-button w3-black">Devamını Oku</a>
+            </div>
+          </div>
+        </div>
+        <!-- Kapadokya'da Balon Turu -->
+        <div class="w3-card-4 w3-margin-bottom">
+          <div class="w3-container" style="display: flex; align-items: center; padding: 15px">
+            <img src="img/kapadokya.jpg" alt="Kapadokya Balon Turu" style="width: 50%; height: auto; padding: 15px;"
+              onclick="openLightbox(this)">
+            <div>
+              <h4>Kapadokya'da Balon Turu</h4>
+              <p>Kapadokya, benzersiz peri bacaları ve tarihi yapılarıyla ünlüdür. Ancak bölgenin sunduğu en özel
+                deneyimlerden biri de sıcak hava balonu turudur. Bu yazımızda Kapadokya'da bir balon turuna katılmak
+                için
+                gerekli bilgiler ve unutulmaz manzaralar hakkında detaylı bilgiler bulacaksınız.</p>
+              <a href="https://www.blogger.com/about/?bpli=1" class="w3-button w3-black">Devamını Oku</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Etkileşimli İçerik -->
+    <div class="w3-container w3-center w3-margin-top">
+      <h3>Etkileşimli İçerik</h3>
+      <div class="w3-container w3-margin-top">
+        <div class="w3-card-4 w3-margin-bottom">
+          <div id="map" style="height: 500px; width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox Container -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImage">
+  </div>
+
+  <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background-color: black; color: white; padding: 20px; text-align: center;">
+      <h5>Sosyal Medya Adreslerimiz</h5>
+      <div class="w3-xlarge w3-padding-8">
+        <a href="https://www.facebook.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-facebook-official"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="w3-hover-text-purple">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </div>
+
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+          class="w3-hover-text-green">w3.css</a></p>
+      <p>© 2024 Bu site örnek amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Slider için JavaScript
+    let slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    // Slider otomatik geçişi
+    setInterval(function () {
+      plusDivs(1);
+    }, 2500);
+
+    var map = L.map('map').setView([39.9334, 32.8597], 6); // Başlangıç konumu
+
+    // Harita katmanını ekle
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Başlangıç işaretçisini ekle
+    var marker = L.marker([39.9334, 32.8597], { draggable: true }).addTo(map)
+      .bindPopup('Başlangıç Noktası')
+      .openPopup();
+
+    // Harita üzerine tıklanabilir yeni işaretçi ekleyelim
+    map.on('click', function (e) {
+      var lat = e.latlng.lat;
+      var lng = e.latlng.lng;
+      var newMarker = L.marker([lat, lng]).addTo(map)
+        .bindPopup("Yeni Nokta: " + lat + ", " + lng)
+        .openPopup();
+    });
+  </script>
+
+  <script src="javascript/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <title>Seyahat Rehberi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="w3-light-grey">
+  
+  <header>
+    <!-- Responsive Navigation Bar -->
+    <div class="w3-bar w3-black w3-border-bottom w3-xlarge">
+      <nav>
+        <!-- Menü Butonu (Sadece Mobilde Görünür) -->
+        <button class="w3-button w3-black w3-xlarge w3-hide-large" onclick="toggleMenu()">&#9776;</button>
+
+        <!-- Navigasyon Linkleri (Büyük Ekranda Görünür) -->
+        <div class="nav-links w3-hide-small">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="flight-hotel.html">Uçuş ve Otel Arama</a>
+          <a href="tours.html">Turlar</a>
+          <a href="contact.html">İletişim</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobil Menü (Başlangıçta Gizli) -->
+    <div id="mobileMenu" class="w3-hide w3-bar-block w3-black w3-large">
+      <a href="index.html" class="w3-bar-item w3-button">Seyahat Rehberi</a>
+      <a href="flight-hotel.html" class="w3-bar-item w3-button">Uçuş ve Otel Arama</a>
+      <a href="tours.html" class="w3-bar-item w3-button">Turlar</a>
+      <a href="contact.html" class="w3-bar-item w3-button">İletişim</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="w3-container">
+      <div class="w3-panel w3-padding-16 w3-black w3-card">
+        <h2>En iyi teklifleri ilk siz alın!</h2>
+        <p>Sayfamıza üye olun ve yeniliklerden anında haberdar olun.</p>
+        <form id="newsletterForm">
+          <label for="emailInput">E-mail</label>
+          <input class="w3-input w3-border" type="email" placeholder="E-mail adresiniz" id="emailInput" required>
+          <button type="submit" class="w3-button w3-red w3-margin-top">Üye Ol</button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Contact -->
+    <div class="w3-container">
+      <h2>İletişim</h2>
+      <p>Bir sonraki seyahatinizi birlikte planlayalım!</p>
+      <i class="fa fa-map-marker" style="width:30px"></i> Denizli, Türkiye<br>
+      <i class="fa fa-phone" style="width:30px"></i> Telefon: +901234567890<br>
+      <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+
+      <form action="#" method="POST" onsubmit="handleSubmit(event)">
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="İsim" required name="İsim"></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Email" required name="Email"></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Mesaj" required name="Mesaj"></p>
+        <p><button class="w3-button w3-black w3-padding-large" type="submit">Mesaj Gönder</button></p>
+      </form>
+    </div>
+
+    <!-- End page content -->
+    </div>
+  </main>
+
+  <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background-color: black; color: white; padding: 20px; text-align: center;">
+      <h5>Sosyal Medya Adreslerimiz</h5>
+      <div class="w3-xlarge w3-padding-8">
+        <a href="https://www.facebook.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-facebook-official"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="w3-hover-text-purple">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </div>
+
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+          class="w3-hover-text-green">w3.css</a></p>
+      <p>© 2024 Bu site örnek amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sayfa yüklendikten sonra JavaScript kodu çalıştırılacak
+    document.addEventListener('DOMContentLoaded', function () {
+      // Formu ve input alanını seçiyoruz
+      const form = document.getElementById("newsletterForm");
+      const emailInput = document.getElementById("emailInput");
+
+      // Form submit olayı için event listener ekliyoruz
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();  // Sayfanın yeniden yüklenmesini engeller
+
+        // E-mail inputundaki değeri alıyoruz
+        const email = emailInput.value;
+
+        // Daha önce kaydedilmiş e-posta adreslerini localStorage'dan alıyoruz
+        let emailList = JSON.parse(localStorage.getItem("emails")) || [];
+
+        // Eğer e-posta adresi daha önce kaydedilmemişse, kaydediyoruz
+        if (!emailList.includes(email)) {
+          // E-posta adresini emailList'e ekliyoruz
+          emailList.push(email);
+
+          // Güncellenmiş listeyi localStorage'a kaydediyoruz
+          localStorage.setItem("emails", JSON.stringify(emailList));
+
+          // Console'a yazdırıyoruz
+          console.log("Girilen E-mail:", email);
+
+          // Kullanıcıya başarılı bir şekilde üye olduğunu belirten bir alert gösteriyoruz
+          alert("Başarıyla üye oldunuz!");
+
+          // E-posta gönderildikten sonra inputu temizleyebiliriz, istenirse bu adım kaldırılabilir.
+          emailInput.value = "";
+        } else {
+          // Eğer e-posta daha önce kaydedilmişse, kullanıcıyı bilgilendiriyoruz
+          alert("Bu e-posta adresi zaten kaydedilmiş.");
+        }
+      });
+    });
+  </script>
+
+  <script src="javascript/script.js"></script>
+
+</body>
+
+</html>

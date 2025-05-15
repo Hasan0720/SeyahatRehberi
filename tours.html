@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <title>Seyahat Rehberi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="w3-light-grey">
+  <header>
+    <!-- Responsive Navigation Bar -->
+    <div class="w3-bar w3-black w3-border-bottom w3-xlarge">
+      <nav>
+        <!-- Menü Butonu (Sadece Mobilde Görünür) -->
+        <button class="w3-button w3-black w3-xlarge w3-hide-large" onclick="toggleMenu()">&#9776;</button>
+
+        <!-- Navigasyon Linkleri (Büyük Ekranda Görünür) -->
+        <div class="nav-links w3-hide-small">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="flight-hotel.html">Uçuş ve Otel Arama</a>
+          <a href="tours.html">Turlar</a>
+          <a href="contact.html">İletişim</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobil Menü (Başlangıçta Gizli) -->
+    <div id="mobileMenu" class="w3-hide w3-bar-block w3-black w3-large">
+      <a href="index.html" class="w3-bar-item w3-button">Seyahat Rehberi</a>
+      <a href="flight-hotel.html" class="w3-bar-item w3-button">Uçuş ve Otel Arama</a>
+      <a href="tours.html" class="w3-bar-item w3-button">Turlar</a>
+      <a href="contact.html" class="w3-bar-item w3-button">İletişim</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page content -->
+    <div class="w3-container">
+
+      <!-- Good offers -->
+      <div class="w3-display-container w3-margin-top w3-center">
+        <h3>Tavsiye Edilen Turlar</h3>
+        <h6>Türkiye'nin dört bir yanındaki tarihi ve doğal güzellikler</h6>
+      </div>
+
+      <div class="gezi-container">
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Yerebatan Sarnıcı / İstanbul</b></h5>
+            <img src="img/yerebatanSarnici.jpg" alt="Yerebatan Sarnıcı" class="lightbox-image"
+              onclick="openLightbox(this)">
+          </div>
+        </div>
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Manavgat Şelalesi / Antalya</b></h5>
+            <img src="img/manavgatSelalesi.jpg" alt="Manavgat Şelalesi" class="lightbox-image"
+              onclick="openLightbox(this)">
+          </div>
+        </div>
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Pamukkale Travertenleri / Denizli</b></h5>
+            <img src="img/pamukkaleTravertenleri.jpg" alt="Pamukkale Travertenleri" class="lightbox-image"
+              onclick="openLightbox(this)">
+          </div>
+        </div>
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Efes Antik Kenti / İzmir</b></h5>
+            <img src="img/efesAntikKenti.jpg" alt="Efes Antik Kenti" class="lightbox-image"
+              onclick="openLightbox(this)">
+          </div>
+        </div>
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Aspendos Tiyatrosu / Antalya</b></h5>
+            <img src="img/aspendosTiyatrosu.jpg" alt="Aspendos Tiyatrosu" class="lightbox-image"
+              onclick="openLightbox(this)">
+          </div>
+        </div>
+        <div class="w3-card-2 gezi-poster">
+          <div class="w3-container">
+            <h5><b>Nemrut Dağı / Adıyaman</b></h5>
+            <img src="img/nemrutDagi.jpg" alt="Nemrut Dağı" class="lightbox-image" onclick="openLightbox(this)">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="w3-container w3-white description w3-center" style="margin: 20px;">
+        <p><span class="w3-tag w3-blue">1000 TL</span>'den başlayan fiyatlarla</p>
+        <button class="w3-button w3-black w3-padding-large w3-hover-red"><a
+            href="https://www.google.com/travel/explore?tfs=CBwQAxoPag0IAhIJL20vMDE5XzhtGg9yDQgCEgkvbS8wMTlfOG1AAUgBcAKCAQsI____________AZgBAQ&tfu=GioaKAoSCcK04rvPaUtAETrhnRtF3UNAEhIJXv8x9vHqO0ARdMI7NwrKMEA&tcfs=UgRgAXgB">Bilet
+            Satın Alın</a></button>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Lightbox Container -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImage">
+  </div>
+
+  <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background-color: black; color: white; padding: 20px; text-align: center;">
+      <h5>Sosyal Medya Adreslerimiz</h5>
+      <div class="w3-xlarge w3-padding-8">
+        <a href="https://www.facebook.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-facebook-official"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="w3-hover-text-purple">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="w3-hover-text-blue">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </div>
+
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+          class="w3-hover-text-green">w3.css</a></p>
+      <p>© 2024 Bu site örnek amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="javascript/script.js"></script>
+
+</body>
+
+</html>

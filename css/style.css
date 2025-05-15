@@ -1,0 +1,291 @@
+/* Tüm Sayfalarla Alakalı */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Raleway", Arial, Helvetica, sans-serif
+}
+
+label {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Nav yapısı */
+nav {
+  display: flex;
+  /* Yatay hizalama */
+  justify-content: space-between;
+  /* Elemanlar arasında boşluk bırakmak için */
+  align-items: center;
+  /* Dikeyde ortalama */
+  padding: 10px;
+}
+
+/* Linkler */
+.nav-links a {
+  text-decoration: none;
+  padding: 10px;
+  display: inline-block;
+}
+
+.nav-links a:hover {
+  background-color: rgb(209, 0, 0);
+  border-radius: 10px;
+  color: white;
+}
+
+/* Mobilde Menü Butonu Göster */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Mobilde linkleri gizle */
+  }
+
+  .w3-hide-large {
+    display: block !important;
+    /* Menü butonunu göster */
+  }
+}
+
+/* Büyük Ekranda Linkler Eşit Aralıklarla */
+@media (min-width: 769px) {
+  .w3-hide-large {
+    display: none !important;
+    /* Büyük ekranda menü butonunu gizle */
+  }
+
+  .nav-links {
+    display: flex;
+    /* Linkleri yatayda hizala */
+    justify-content: space-evenly;
+    /* Linkler arasında eşit boşluk bırak */
+    width: 100%;
+    /* Tam genişlikte olsun */
+  }
+}
+
+/* Ortadaki içeriğin taşmasını önlemek */
+.w3-display-middle {
+  max-height: 90vh;
+  /* Ekranın %90'ını kaplayabilir */
+  overflow-y: auto;
+  /* Dikey kaydırma çubuğunu ekler */
+  padding: 10px;
+}
+
+.w3-display-container {
+  position: relative;
+  max-height: 100vh;
+  /* Slider yüksekliğini ayarlar */
+  overflow: auto;
+}
+
+.w3-display-container img {
+  width: 100%;
+  height: auto;  /* Resmin orantısını korur */
+}
+
+/*En üste çıkarma*/
+#scrollToTopBtn {
+  display: block;
+  visibility: visible;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  /* Sayfanın üst kısmında görünmesi için */
+}
+
+#scrollToTopBtn:hover {
+  background-color: black;
+}
+
+/* Lightbox genel stili */
+.lightbox {
+  display: none;
+  /* Başlangıçta gizli */
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Siyah yarı saydam arka plan */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lightbox içeriği */
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  margin: auto;
+  display: block;
+  border: 5px solid white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Kapatma düğmesi */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Sadece index sayfasında kullanılanlar */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Slider içindeki img etiketleri */
+.slider-container img {
+  width: 100%; /* Resimler container genişliği kadar olacak */
+  height: auto; /* Oran korunacak */
+  display: block; /* Resimlerin satır içi boşluklarından kaçınılır */
+  object-fit: cover;
+}
+
+.mySlides {
+  width: 100%;
+  /* Varsayılan olarak tüm slaytları gizler */
+}
+
+/* Slider Görselleri */
+.mySlides img {
+  width: 100%;
+  /* Görsel genişliği slider alanına tam oturur */
+  height: 90vh;
+  object-fit: contain;
+  /* Görselin tamamını göstermek için kullanılır */
+}
+
+/* Resmin latındaki yazıyı ortalıyor */
+.w3-display-bottomleft {
+  position: absolute;
+  bottom: 0; /* Alt kısma yerleştir */
+  left: 50%; /* Ortalamak için soldan %50 uzaklaştır */
+  transform: translateX(-50%); /* Ortalamak için soldan geri kaydır */
+  text-align: center; /* Yazıyı ortala */
+  width: 100%; /* İsteğe bağlı: Tam genişlik için */
+}
+
+/* Sadece uçuş ve otel arama sayfasında kullanılanlar */
+.myLink {
+  display: none
+}
+
+#flightResults,
+#hotelResults {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  max-height: 20vh;
+  /* Ekranın %20'sini kaplar */
+  margin-top: 16px;
+  overflow-y: auto;
+  /* Taşan içerik için dikey kaydırma */
+}
+
+/* Mouse Hold Efekti */
+.seyahat-menüsü {
+  width: 100%;
+  /* %100 genişlik */
+  height: 100vh;
+  /* Ekranın tamamını kapsayacak şekilde ayarlandı */
+  position: relative;
+  background-color: #467ee7;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  /* Taşan içerik gizlenir */
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  animation: pulse 1.5s infinite;
+  /* Pulsing animasyonu */
+  pointer-events: none;
+  /* Fare etkileşimini engelle */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.seyahat-menüsü-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Sadece turlar sayfasında kullanılanlar */
+.gezi-container {
+  display: flex;
+  flex-wrap: wrap;
+  /*Ekran boyutu küçüldüğünde kartların taşmadan alt satıra geçmesini sağlar*/
+  justify-content: center;
+  gap: 13px;
+  /*Kartlar arasında 10'ar px boşluklar oluşturur*/
+}
+
+.gezi-poster {
+  color: black;
+  padding: 15px 10px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+  text-align: center;
+  width: calc(50% - 25px);
+  /* Yan yana iki kart için genişlik*/
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  border: 1px solid #817e7e;
+  /* Gri renkli kenarlık */
+}
+
+.gezi-poster:hover {
+  box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+.gezi-poster img {
+  width: 100%;
+  border-radius: 10px;
+}
